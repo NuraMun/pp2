@@ -12,13 +12,20 @@ using namespace std;
 struct Task {
     function<void(int)> func; 
     int x;
+    Task() {
+        x = 0;
+    }
+    Task(function<void(int)> &func_, int& x_) {
+        x = x_;
+        func = func_;
+    }
     //int y;
 };
 
 class threadsPool {
 private:
     vector <thread> threads;
-    size_t cntThreads = thread::hardware_concurrency();;
+    unsigned int cntThreads;
    // queue <function <void()>> q;
     queue<Task> q;
 
@@ -26,7 +33,7 @@ private:
     std::condition_variable condition;
 
 public:
-    int GetThreads();
+    unsigned int GetThreads();
     threadsPool();
     ~threadsPool();
     void run();

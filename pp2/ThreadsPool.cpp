@@ -1,8 +1,8 @@
 #include "ThreadsPool.h"
 
 threadsPool::threadsPool() {
-    //cntThreads = thread::hardware_concurrency();
-    for (int i = 0; i <= cntThreads; i++) {
+    cntThreads = thread::hardware_concurrency();
+    for (unsigned int i = 0; i <= cntThreads; i++) {
         //thread th(&threadsPool::run, this);
         threads.emplace_back(&threadsPool::run, this);
     }
@@ -10,13 +10,13 @@ threadsPool::threadsPool() {
 }
 
 threadsPool::~threadsPool() {
-    for (int i = 0; i <= cntThreads; i++) {
+    for (unsigned int i = 0; i <= cntThreads; i++) {
         if (threads[i].joinable())
             threads[i].join();
     }
     unique_lock<std::mutex> M1(m);
 }
-int threadsPool::GetThreads() {
+unsigned int threadsPool::GetThreads() {
     return thread::hardware_concurrency();
 }
 void threadsPool::run() {
@@ -36,7 +36,8 @@ void threadsPool::run() {
 void threadsPool::passQ(function<void(int)> f, int x) {
     
     std::lock_guard<std::mutex> lg(m);
-    q.push(Task{ f, x });
+    
+    q.push(Task{f, x});
     condition.notify_one(); 
 }
 //void threadsPool::passQ(function<void()> f)
