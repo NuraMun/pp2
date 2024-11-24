@@ -5,29 +5,6 @@
 
 using namespace std;
 
-//void printOk() {
-//    for (int i = 0; i < 5; i++) {
-//        printf("Ok ");
-//        this_thread::sleep_for(std::chrono::seconds(5)); 
-//    }
-//    
-//}
-//
-//void printNumbers(int x, int y) {
-//    for (int i = 0; i < 5; i++) {
-//        printf("%i, %i\n", x,y);
-//        this_thread::sleep_for(std::chrono::seconds(3)); 
-//    }
-//
-//}
-
-
-//Формула Бине для нахождения n-го члена последовательности Фибоначчи
-//void FBinet(int n) {
-//    double f = (pow(((1 + sqrt(5)) / 2), n) - pow((1 - (1 + sqrt(5)) / 2), n))/sqrt(5);
-//    printf("Fibonachi value for %d element = %lf\n", n, f);
-//}
-
 void Binet(int n)
 {
     double f{ 0.0 };
