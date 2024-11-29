@@ -26,7 +26,6 @@ class threadsPool {
 private:
     vector <thread> threads;
     unsigned int cntThreads;
-   // queue <function <void()>> q;
     queue<Task> q;
     bool stop = false;
     std::mutex m;
@@ -37,6 +36,5 @@ public:
     threadsPool();
     ~threadsPool();
     void run();
-   // void passQ(function<void()> f);
     void passQ(function<void(int)> f, int x);
 };
