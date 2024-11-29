@@ -5,8 +5,8 @@ INSTALL_DIR = ~/pp
 
 all: $(EXECUTABLE)
 
-$(EXECUTABLE): main.cpp ThreadsPool.cpp ThreadsPool.h
-	$(CC) $(CFLAGS) main.cpp ThreadsPool.cpp -o $(EXECUTABLE)
+$(EXECUTABLE): pp2.cpp ThreadsPool.cpp ThreadsPool.h
+	$(CC) $(CFLAGS) pp2.cpp ThreadsPool.cpp -o $(EXECUTABLE)
 
 install: $(EXECUTABLE)
 	mkdir -p $(INSTALL_DIR)
