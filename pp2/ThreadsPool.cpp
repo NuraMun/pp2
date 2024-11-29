@@ -10,6 +10,8 @@ threadsPool::threadsPool() {
 }
 
 threadsPool::~threadsPool() {
+    stop = true;
+    condition.notify_all();
     for (unsigned int i = 0; i <= cntThreads; i++) {
         if (threads[i].joinable())
             threads[i].join();
@@ -23,15 +25,23 @@ void threadsPool::run() {
     Task task;
     while (true) {
         unique_lock<mutex>lk(m);
-        condition.wait(lk, [this]() {return !q.empty(); });
-         task = q.front();
+        condition.wait(lk, [this]() {return !q.empty() || stop; });
+        if (!q.empty()) {
 
-        q.pop();
-        lk.unlock();
+            task = q.front();
 
-        task.func(task.x);
+            q.pop();
+            lk.unlock();
+
+            task.func(task.x);
+        }
+        if (stop) {
+            break;
+        }
+        
      
     }
+
 }
 void threadsPool::passQ(function<void(int)> f, int x) {
     

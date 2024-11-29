@@ -28,7 +28,7 @@ private:
     unsigned int cntThreads;
    // queue <function <void()>> q;
     queue<Task> q;
-
+    bool stop = false;
     std::mutex m;
     std::condition_variable condition;
 
