@@ -15,7 +15,4 @@ install: $(EXECUTABLE)
 clean:
 	rm -f $(EXECUTABLE)
 
-cleanI:
-	rm -f $(INSTALL_DIR)/$(EXECUTABLE)
-
 .PHONY: all install clean cleanI
