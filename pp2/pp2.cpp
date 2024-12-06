@@ -27,7 +27,7 @@ void Binet(int n)
 int main()
 {
     threadsPool pool;
-    int n = pool.GetThreads();
+    unsigned int n = pool.GetThreads();
     cout <<"Number Threads: " << pool.GetThreads() << endl;
     for (int i = 0; i < n; i++) {
         pool.passQ(Binet, i*10);
