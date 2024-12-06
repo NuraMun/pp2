@@ -19,7 +19,7 @@ struct Task {
         x = x_;
         func = func_;
     }
-    //int y;
+ 
 };
 
 class threadsPool {

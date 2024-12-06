@@ -27,11 +27,15 @@ int main()
 {
     threadsPool pool;
     unsigned int n = pool.GetThreads();
-    cout <<"Number Threads: " << pool.GetThreads() << endl;
-    for (int i = 0; i < n; i++) {
-        pool.passQ(Binet, i*10);
-        
+    if (n == 0) {
+        printf("Number Threads = 0.The program will not be completed");
+    }
+    else {
+        cout << "Number of Threads: " << pool.GetThreads() << endl;
+        for (int i = 0; i < n; i++) {
+            pool.passQ(Binet, i * 10);
+
+        }
     }
     
-
 }

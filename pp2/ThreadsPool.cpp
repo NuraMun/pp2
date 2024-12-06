@@ -3,7 +3,6 @@
 threadsPool::threadsPool() {
     cntThreads = thread::hardware_concurrency();
     for (unsigned int i = 0; i <= cntThreads; i++) {
-        //thread th(&threadsPool::run, this);
         threads.emplace_back(&threadsPool::run, this);
     }
     lock_guard<mutex> M(m);
@@ -44,9 +43,10 @@ void threadsPool::run() {
 
 }
 void threadsPool::passQ(function<void(int)> f, int x) {
-    
-    std::lock_guard<std::mutex> lg(m);
-    q.push(Task{f, x});
+    {
+        std::lock_guard<std::mutex> lg(m);
+        q.push(Task{ f, x });
+    }
     condition.notify_one(); 
 }
 
