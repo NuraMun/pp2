@@ -21,7 +21,6 @@ void Binet(int n)
         f += fff;
     }
     f = (round)(f / 10000.0);
-
     printf("Fibonachi value for %d element = %lf\n", n, f);
 }
 

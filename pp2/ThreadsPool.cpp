@@ -46,7 +46,6 @@ void threadsPool::run() {
 void threadsPool::passQ(function<void(int)> f, int x) {
     
     std::lock_guard<std::mutex> lg(m);
-    
     q.push(Task{f, x});
     condition.notify_one(); 
 }
