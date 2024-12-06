@@ -17,7 +17,6 @@ void Binet(int n)
         {
             fff = sqrt(fff * fff);
         }
-
         f += fff;
     }
     f = (round)(f / 10000.0);
