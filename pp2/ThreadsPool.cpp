@@ -1,11 +1,10 @@
 #include "ThreadsPool.h"
 
 threadsPool::threadsPool() {
-    cntThreads = thread::hardware_concurrency();
+    cntThreads = GetThreads();
     for (unsigned int i = 0; i <= cntThreads; i++) {
         threads.emplace_back(&threadsPool::run, this);
     }
-    lock_guard<mutex> M(m);
 }
 
 threadsPool::~threadsPool() {
@@ -15,7 +14,6 @@ threadsPool::~threadsPool() {
         if (threads[i].joinable())
             threads[i].join();
     }
-    unique_lock<std::mutex> M1(m);
 }
 unsigned int threadsPool::GetThreads() {
     return thread::hardware_concurrency();

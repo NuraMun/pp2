@@ -32,7 +32,7 @@ int main()
     }
     else {
         cout << "Number of Threads: " << pool.GetThreads() << endl;
-        for (int i = 0; i < n; i++) {
+        for (unsigned int i = 0; i < n; i++) {
             pool.passQ(Binet, i * 10);
 
         }
