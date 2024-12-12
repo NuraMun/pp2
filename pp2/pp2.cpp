@@ -5,15 +5,15 @@
 
 using namespace std;
 
-void Binet(int n)
+void Binet(uint32_t n)
 {
     double f{ 0.0 };
     
-    for (unsigned int i = 0; i < 10000; ++i)
+    for (uint32_t i = 0; i < 10000; ++i)
     {
         double fff = (pow(((1 + sqrt(5)) / 2), n) - pow((1 - (1 + sqrt(5)) / 2), n)) / sqrt(5);
 
-        for (unsigned int j = 0; j < 10000; ++j)
+        for (uint32_t j = 0; j < 10000; ++j)
         {
             fff = sqrt(fff * fff);
         }
@@ -26,13 +26,13 @@ void Binet(int n)
 int main()
 {
     threadsPool pool;
-    unsigned int n = pool.GetThreads();
+    uint32_t n = pool.GetThreads();
     if (n == 0) {
         printf("Number Threads = 0.The program will not be completed");
     }
     else {
         cout << "Number of Threads: " << pool.GetThreads() << endl;
-        for (unsigned int i = 0; i < n; i++) {
+        for (uint32_t i = 0; i < n; i++) {
             pool.passQ(Binet, i * 10);
 
         }

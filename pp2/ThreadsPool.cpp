@@ -2,7 +2,7 @@
 
 threadsPool::threadsPool() {
     cntThreads = thread::hardware_concurrency();
-    for (unsigned int i = 0; i <= cntThreads; i++) {
+    for (uint32_t i = 0; i <= cntThreads; i++) {
         threads.emplace_back(&threadsPool::run, this);
     }
 }

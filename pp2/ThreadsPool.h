@@ -25,7 +25,7 @@ struct Task {
 class threadsPool {
 private:
     vector <thread> threads;
-    unsigned int cntThreads;
+    uint32_t cntThreads;
     queue<Task> q;
     bool stop = false;
     std::mutex m;
