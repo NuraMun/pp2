@@ -1,7 +1,7 @@
 #include "ThreadsPool.h"
 
 threadsPool::threadsPool() {
-    cntThreads = GetThreads();
+    cntThreads = thread::hardware_concurrency();
     for (unsigned int i = 0; i <= cntThreads; i++) {
         threads.emplace_back(&threadsPool::run, this);
     }
@@ -16,7 +16,7 @@ threadsPool::~threadsPool() {
     }
 }
 unsigned int threadsPool::GetThreads() {
-    return thread::hardware_concurrency();
+    return cntThreads;
 }
 void threadsPool::run() {
     Task task;

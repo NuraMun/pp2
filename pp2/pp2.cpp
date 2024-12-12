@@ -9,11 +9,11 @@ void Binet(int n)
 {
     double f{ 0.0 };
     
-    for (size_t i = 0; i < 10000; ++i)
+    for (unsigned int i = 0; i < 10000; ++i)
     {
         double fff = (pow(((1 + sqrt(5)) / 2), n) - pow((1 - (1 + sqrt(5)) / 2), n)) / sqrt(5);
 
-        for (size_t j = 0; j < 10000; ++j)
+        for (unsigned int j = 0; j < 10000; ++j)
         {
             fff = sqrt(fff * fff);
         }
